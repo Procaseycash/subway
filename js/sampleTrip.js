@@ -79,6 +79,7 @@ function getBalance() {
     document.getElementById('loader').innerHTML = 'processing balance...';
     setTimeout(function () {
         document.getElementById('balanceAfterTrip').style.display = 'block';
+        document.getElementById('loader').style.display = 'none';
         document.getElementById('card_balance').innerHTML = "$" + Trip.getCardBalance();
     }, 1500);
 }
