@@ -49,13 +49,13 @@ window.Trip = (function () {
             }
             this.resetBoardingDetails(); // reset trip params
             var from_ = stations.filter(function (station) {
-                return station.name.toLowerCase() === to.toLowerCase()
+                return station.name.toLowerCase() === from.toLowerCase()
             });
             var to_ = stations.filter(function (station) {
                 return station.name.toLowerCase() === to.toLowerCase()
             });
             _by = by;
-            // console.log(from_, to_, _by);
+            console.log(from_, to_, _by);
             if (from_.length <= 0 || to_.length <= 0) {
                 alert('Please supply valid from or to');
                 throw new Error('Please supply valid from or to');
