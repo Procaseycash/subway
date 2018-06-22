@@ -13,8 +13,9 @@ Kindly make sure you have setup "git" on your system.
 
 Please run this command
 ```bash
-$ git clone 
+$ git clone https://github.com/Procaseycash/subway.git 
 ```
+or download from `https://github.com/Procaseycash/subway`
 
 ## Running this app
 
