@@ -1,29 +1,29 @@
 window.Trip = (function () {
-    const stations = [
+    var stations = [
         {name: '5th', zone: [1]},
         {name: 'Pelham Parkway', zone: [1, 2]},
         {name: 'Bronx', zone: [3]},
-        {name: 'Guns Hill', zone: [2]},
+        {name: 'Guns Hill', zone: [2]}
     ];
-    const tripMeans = ['SUBWAY', 'BUS'];
-    let _card = 0;
-    let _from = null;
-    let _to = null;
-    let _by = null;
-    let _maximumFare = 0.00;
+    var tripMeans = ['SUBWAY', 'BUS'];
+    var _card = 0;
+    var _from = null;
+    var _to = null;
+    var _by = null;
+    var _maximumFare = 0.00;
 
     return {
         /**
          * This is used to load a card.
          */
-        loadCard() {
+        loadCard: function () {
             _card = 30;
         },
 
         /**
          * This is used to reset boarding details for new board process.
          */
-        resetBoardingDetails() {
+        resetBoardingDetails: function () {
             _from = null;
             _by = null;
             _to = null;
@@ -48,8 +48,12 @@ window.Trip = (function () {
                 throw new Error('Please use either ' + tripMeans.toString().replace(',', ' or '));
             }
             this.resetBoardingDetails(); // reset trip params
-            const from_ = stations.filter((station) => station.name.toLowerCase() === from.toLowerCase());
-            const to_ = stations.filter((station) => station.name.toLowerCase() === to.toLowerCase());
+            var from_ = stations.filter(function (station) {
+                return station.name.toLowerCase() === to.toLowerCase()
+            });
+            var to_ = stations.filter(function (station) {
+                return station.name.toLowerCase() === to.toLowerCase()
+            });
             _by = by;
             // console.log(from_, to_, _by);
             if (from_.length <= 0 || to_.length <= 0) {
@@ -64,13 +68,13 @@ window.Trip = (function () {
                 _maximumFare = 1.80;
             }
             this.chargeCard(); // this is used to charge the maximum fare on card
-            return {from, to, by, fare: _maximumFare}
+            return {from: from, to: to, by: by, fare: _maximumFare}
         },
 
         /**
          * This is used to determin subway maximum fare based on trip taken
          */
-        processSubwayMaximumFare() {
+        processSubwayMaximumFare: function () {
             if (_from.zone.length === 1 && _from.zone.indexOf(1) > -1) {
                 _maximumFare = 2.50;
             } else if (_from.zone.length === 1 && _from.zone.indexOf(1) === -1) {
@@ -87,14 +91,14 @@ window.Trip = (function () {
         /**
          * This is used to charge Card after trip ends for a journey taken
          */
-        chargeCard() {
+        chargeCard: function () {
             _card -= _maximumFare;
         },
 
         /**
          * This is used to get card balance
          */
-        getCardBalance() {
+        getCardBalance: function () {
             return _card.toFixed(2);
         }
     }
