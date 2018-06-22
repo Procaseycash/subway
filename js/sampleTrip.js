@@ -23,7 +23,7 @@ function buildTripInfo() {
     var list = '<br /><b style="font-size: 25px">Trip Details </b><br />';
     list += '<table border="1" cellspacing="2" cellpadding="2"> <tr><td>#</td><td>From</td><td>To</td><td>By</td><td>Maximum Fare</td></tr>';
     tripList.forEach(function (trip, i) {
-        list += "<tr><td>" + i + 1 + "</td><td>";
+        list += "<tr><td>" + (i + 1) + "</td><td>";
         list += trip.from + "</td><td>" + trip.to + "</td><td>" + trip.by + "</td><td>" + trip.fare + "</td></tr>";
     });
     list += '</table>';
